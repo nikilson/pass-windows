@@ -14,3 +14,11 @@ C:\Users\<UserName>\.password-store
 
 * Make sure you installed the `GnuGPG` for windows 
 * Assuming you have already have the `C:\Users\<UserName>\.password-store\.gpg-id` configured
+
+## For Reading the Passwords
+
+Please checkout [Wox](https://github.com/Wox-launcher/Wox/releases/tag/v1.4.1196)
+And Install [pass-wox](https://github.com/nikilson/pass-wox) extension
+
+## Thank you
+Waiting for your feedbacks, issues, pull request.
