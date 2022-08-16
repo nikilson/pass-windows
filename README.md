@@ -20,5 +20,9 @@ C:\Users\<UserName>\.password-store
 Please checkout [Wox](https://github.com/Wox-launcher/Wox/releases/tag/v1.4.1196)
 And Install [pass-wox](https://github.com/nikilson/pass-wox) extension
 
+```
+wpm install UnixPassMenu
+```
+
 ## Thank you
 Waiting for your feedbacks, issues, pull request.
