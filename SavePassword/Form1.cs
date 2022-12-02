@@ -121,5 +121,57 @@ namespace SavePassword
                 
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("C:\\Program Files\\Git\\bin\\git.exe"))
+            {
+                MessageBox.Show("Please install Git for windows in C:\\Program Files\\Git\\bin\\git.exe", "Git Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string home = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+                if (Environment.OSVersion.Version.Major >= 6)
+                {
+                    home = Directory.GetParent(home).ToString();
+                }
+                string passwordDirectory = Path.Combine(home, ".password-store");
+
+                Process process_0 = new Process();
+                process_0.StartInfo.FileName = "C:\\Program Files\\Git\\bin\\git.exe";
+                process_0.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process_0.StartInfo.RedirectStandardOutput = true;
+                process_0.StartInfo.RedirectStandardError = true;
+                process_0.StartInfo.UseShellExecute = false;
+                process_0.StartInfo.CreateNoWindow = true;
+                // String time = DateTime.Now.ToString("HH:mm:ss tt");
+                process_0.StartInfo.Arguments = " -C " + passwordDirectory + " add -A";
+                process_0.Start();
+                process_0.WaitForExit();
+
+                Process process_1 = new Process();
+                process_1.StartInfo.FileName = "C:\\Program Files\\Git\\bin\\git.exe";
+                process_1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process_1.StartInfo.RedirectStandardOutput = true;
+                process_1.StartInfo.RedirectStandardError = true;
+                process_1.StartInfo.UseShellExecute = false;
+                process_1.StartInfo.CreateNoWindow = true;
+                // String time = DateTime.Now.ToString("HH:mm:ss tt");
+                process_1.StartInfo.Arguments = " -C " + passwordDirectory + " commit -m \"Passwords updated\"";
+                process_1.Start();
+                process_1.WaitForExit();
+                Process process_2 = new Process();
+                process_2.StartInfo.FileName = "C:\\Program Files\\Git\\bin\\git.exe";
+                process_2.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process_2.StartInfo.RedirectStandardOutput = true;
+                process_2.StartInfo.RedirectStandardError = true;
+                process_2.StartInfo.UseShellExecute = false;
+                process_2.StartInfo.CreateNoWindow = true;
+                process_2.StartInfo.Arguments = " -C " + passwordDirectory + " push";
+                process_2.Start();
+                process_2.WaitForExit();
+                MessageBox.Show("Passwords would be sent, If the repo is set, and authenticates properly", "Check the Remote", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
